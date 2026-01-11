@@ -82,4 +82,13 @@ class ApplicationTest extends TestCase
 
         $app->start();
     }
+
+    public function testCallApplicationWithoutCommand(): void
+    {
+        $this->input->method('getCommandName')->willReturn(null);
+        $this->output->expects($this->atLeastOnce())->method('printLine');
+
+        $app = new Application($this->input, $this->output);
+        $app->start();
+    }
 }
