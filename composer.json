@@ -1,0 +1,24 @@
+{
+    "name": "egor/cli-app",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Egor\\CliApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Egor Borisovsky",
+            "email": "mr-warete@mail.ru"
+        }
+    ],
+    "require": {
+        "php": "^8.4"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.92"
+    },
+    "scripts": {
+        "fixcs": "./vendor/bin/php-cs-fixer fix --diff --verbose"
+    }
+}
