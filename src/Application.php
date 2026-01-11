@@ -34,7 +34,7 @@ class Application
                 throw new CommandNotFound($commandName);
             }
 
-            if (in_array('help', $this->input->getArguments())) {
+            if (\in_array('help', $this->input->getArguments())) {
                 $this->output->printLine(\sprintf('Command help: %s%s', $command->getDescription(), PHP_EOL));
             }
 

@@ -33,7 +33,7 @@ class TestCommand extends BaseCommand
         $output->printLine('Options:');
         foreach ($input->getParams() as $name => $value) {
             $output->printLine(\sprintf("\t- %s", $name));
-            foreach (is_array($value) ? $value : [$value] as $v) {
+            foreach (\is_array($value) ? $value : [$value] as $v) {
                 $output->printLine(\sprintf("\t\t- %s", $v));
             }
         }

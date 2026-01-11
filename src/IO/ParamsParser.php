@@ -4,7 +4,7 @@ namespace Egor\Cli\IO;
 
 class ParamsParser implements Contract\InputParser
 {
-    /** @var array<int, string|null>  */
+    /** @var array<int, string|null> */
     private array $data = [];
 
     /**
