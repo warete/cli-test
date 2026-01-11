@@ -4,7 +4,7 @@ namespace Warete\Cli\IO;
 
 class ArgumentsParser implements Contract\InputParser
 {
-    /** @var array<int, string|null>  */
+    /** @var array<int, string|null> */
     private array $data = [];
 
     public function setData(array $data): static
@@ -19,6 +19,7 @@ class ArgumentsParser implements Contract\InputParser
      */
     public function parse(): array
     {
+        /** @var array<int, string> $result */
         $result = [];
         foreach (\array_slice($this->data, 2) as $argValue) {
             $value = null;
@@ -31,14 +32,14 @@ class ArgumentsParser implements Contract\InputParser
             if (!mb_strlen((string) $value)) {
                 continue;
             }
-            $valueParts = explode(',', $value);
-            if (count($valueParts) > 1) {
+            $valueParts = explode(',', (string) $value);
+            if (\count($valueParts) > 1) {
                 $result = [
                     ...$result,
-                    ...array_filter($valueParts, fn (string $part): bool => mb_strlen($part) > 0)
+                    ...array_filter($valueParts, fn (string $part): bool => mb_strlen($part) > 0),
                 ];
             } else {
-                $result[] = $value;
+                $result[] = (string) $value;
             }
         }
 

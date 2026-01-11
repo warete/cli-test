@@ -28,10 +28,10 @@ class ParamsParser implements Contract\InputParser
             if (preg_match('/^\[(?<name>.+?)=(?<value>.*?)\]$/', (string) $argValue, $matches)) {
                 $result[$matches['name']] ??= [];
                 $valueParts = explode(',', trim($matches['value'], '{}'));
-                if (count($valueParts) > 1) {
+                if (\count($valueParts) > 1) {
                     $result[$matches['name']] = [
                         ...$result[$matches['name']],
-                        ...array_filter($valueParts, fn (string $part): bool => mb_strlen($part) > 0)
+                        ...array_filter($valueParts, fn (string $part): bool => mb_strlen($part) > 0),
                     ];
                 } else {
                     $result[$matches['name']][] = $matches['value'];

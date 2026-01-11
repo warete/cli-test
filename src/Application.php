@@ -7,7 +7,6 @@ use Warete\Cli\Command\HelpCommand;
 use Warete\Cli\Exception\CommandNotFound;
 use Warete\Cli\IO\Contract\Input;
 use Warete\Cli\IO\Contract\Output;
-use Throwable;
 
 class Application
 {

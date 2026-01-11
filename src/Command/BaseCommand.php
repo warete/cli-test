@@ -8,7 +8,7 @@ abstract class BaseCommand implements Command
 {
     public function getName(): string
     {
-        return (string) mb_strtolower(mb_strstr(new \ReflectionClass($this)->getShortName(), 'Command', true));
+        return (string) mb_strtolower((string) mb_strstr(new \ReflectionClass($this)->getShortName(), 'Command', true));
     }
 
     public function getDescription(): string
