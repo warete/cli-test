@@ -3,8 +3,9 @@
     "type": "project",
     "autoload": {
         "psr-4": {
-            "Egor\\Cli\\": "src/",
-            "Egor\\CliApp\\": "app/"
+            "Warete\\Cli\\": "src/",
+            "Warete\\CliApp\\": "app/",
+            "Warete\\Cli\\Tests\\": "tests/"
         }
     },
     "authors": [

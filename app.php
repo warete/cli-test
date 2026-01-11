@@ -1,17 +1,17 @@
 <?php
 
-use Egor\CliApp\TestCommand;
+use Warete\CliApp\TestCommand;
 
 require_once 'vendor/autoload.php';
 
-$input = new \Egor\Cli\IO\StdInput(
-    paramsParser: new \Egor\Cli\IO\ParamsParser(),
-    argumentsParser: new \Egor\Cli\IO\ArgumentsParser(),
+$input = new \Warete\Cli\IO\StdInput(
+    paramsParser: new \Warete\Cli\IO\ParamsParser(),
+    argumentsParser: new \Warete\Cli\IO\ArgumentsParser(),
     argv: $argv,
 );
 
-$output = new \Egor\Cli\IO\StdOutput();
+$output = new \Warete\Cli\IO\StdOutput();
 
-$app = new \Egor\Cli\Application(input: $input, output: $output);
+$app = new \Warete\Cli\Application(input: $input, output: $output);
 $app->addCommand(new TestCommand());
 $app->start();

@@ -1,6 +1,6 @@
 <?php
 
-namespace Egor\Cli\IO;
+namespace Warete\Cli\IO;
 
 class ParamsParser implements Contract\InputParser
 {
@@ -27,11 +27,11 @@ class ParamsParser implements Contract\InputParser
         foreach (\array_slice($this->data, 2) as $argValue) {
             if (preg_match('/^\[(?<name>.+?)=(?<value>.*?)\]$/', (string) $argValue, $matches)) {
                 $result[$matches['name']] ??= [];
-                $valueParts = explode(',', $matches['value']);
+                $valueParts = explode(',', trim($matches['value'], '{}'));
                 if (count($valueParts) > 1) {
                     $result[$matches['name']] = [
                         ...$result[$matches['name']],
-                        ...$valueParts
+                        ...array_filter($valueParts, fn (string $part): bool => mb_strlen($part) > 0)
                     ];
                 } else {
                     $result[$matches['name']][] = $matches['value'];

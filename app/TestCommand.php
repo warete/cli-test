@@ -1,11 +1,11 @@
 <?php
 
-namespace Egor\CliApp;
+namespace Warete\CliApp;
 
-use Egor\Cli\Application;
-use Egor\Cli\Command\BaseCommand;
-use Egor\Cli\IO\Contract\Input;
-use Egor\Cli\IO\Contract\Output;
+use Warete\Cli\Application;
+use Warete\Cli\Command\BaseCommand;
+use Warete\Cli\IO\Contract\Input;
+use Warete\Cli\IO\Contract\Output;
 
 class TestCommand extends BaseCommand
 {

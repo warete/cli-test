@@ -1,10 +1,10 @@
 <?php
 
-namespace Egor\Cli\Command;
+namespace Warete\Cli\Command;
 
-use Egor\Cli\Application;
-use Egor\Cli\IO\Contract\Input;
-use Egor\Cli\IO\Contract\Output;
+use Warete\Cli\Application;
+use Warete\Cli\IO\Contract\Input;
+use Warete\Cli\IO\Contract\Output;
 
 class HelpCommand extends BaseCommand
 {

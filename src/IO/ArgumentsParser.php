@@ -1,6 +1,6 @@
 <?php
 
-namespace Egor\Cli\IO;
+namespace Warete\Cli\IO;
 
 class ArgumentsParser implements Contract\InputParser
 {
@@ -22,20 +22,20 @@ class ArgumentsParser implements Contract\InputParser
         $result = [];
         foreach (\array_slice($this->data, 2) as $argValue) {
             $value = null;
-            if (preg_match('/^{(.*)}$/', (string) $argValue, $matches)) {
+            if (preg_match('/^{([A-z0-9,]+)}$/', (string) $argValue, $matches)) {
                 $value = $matches[1];
             }
             if (preg_match('/^[A-z]+$/', (string) $argValue)) {
                 $value = $argValue;
             }
-            if (!$value) {
+            if (!mb_strlen((string) $value)) {
                 continue;
             }
             $valueParts = explode(',', $value);
             if (count($valueParts) > 1) {
                 $result = [
                     ...$result,
-                    ...$valueParts
+                    ...array_filter($valueParts, fn (string $part): bool => mb_strlen($part) > 0)
                 ];
             } else {
                 $result[] = $value;

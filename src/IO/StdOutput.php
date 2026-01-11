@@ -1,6 +1,6 @@
 <?php
 
-namespace Egor\Cli\IO;
+namespace Warete\Cli\IO;
 
 class StdOutput implements Contract\Output
 {

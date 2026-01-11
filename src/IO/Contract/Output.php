@@ -1,6 +1,6 @@
 <?php
 
-namespace Egor\Cli\IO\Contract;
+namespace Warete\Cli\IO\Contract;
 
 interface Output
 {

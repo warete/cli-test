@@ -1,9 +1,9 @@
 <?php
 
-namespace Egor\Cli\IO;
+namespace Warete\Cli\IO;
 
-use Egor\Cli\IO\Contract\Input;
-use Egor\Cli\IO\Contract\InputParser;
+use Warete\Cli\IO\Contract\Input;
+use Warete\Cli\IO\Contract\InputParser;
 
 class StdInput implements Input
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Egor\Cli\Exception;
+namespace Warete\Cli\Exception;
 
 use Throwable;
 

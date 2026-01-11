@@ -1,12 +1,12 @@
 <?php
 
-namespace Egor\Cli;
+namespace Warete\Cli;
 
-use Egor\Cli\Command\Contract\Command;
-use Egor\Cli\Command\HelpCommand;
-use Egor\Cli\Exception\CommandNotFound;
-use Egor\Cli\IO\Contract\Input;
-use Egor\Cli\IO\Contract\Output;
+use Warete\Cli\Command\Contract\Command;
+use Warete\Cli\Command\HelpCommand;
+use Warete\Cli\Exception\CommandNotFound;
+use Warete\Cli\IO\Contract\Input;
+use Warete\Cli\IO\Contract\Output;
 use Throwable;
 
 class Application
@@ -25,23 +25,19 @@ class Application
 
     public function start(): void
     {
-        try {
-            $commandName = $this->input->getCommandName() ?? 'help';
+        $commandName = $this->input->getCommandName() ?? 'help';
 
-            $command = $this->findCommand($commandName);
+        $command = $this->findCommand($commandName);
 
-            if (!$command) {
-                throw new CommandNotFound($commandName);
-            }
-
-            if (\in_array('help', $this->input->getArguments())) {
-                $this->output->printLine(\sprintf('Command help: %s%s', $command->getDescription(), PHP_EOL));
-            }
-
-            $command->handle($this->input, $this->output, $this);
-        } catch (Throwable $e) {
-            $this->output->printLine(\sprintf("An error occurred: `%s`%sStack:%s", $e->getMessage(), PHP_EOL, $e->getTraceAsString()));
+        if (!$command) {
+            throw new CommandNotFound($commandName);
         }
+
+        if (\in_array('help', $this->input->getArguments())) {
+            $this->output->printLine(\sprintf('Command help: %s%s', $command->getDescription(), PHP_EOL));
+        }
+
+        $command->handle($this->input, $this->output, $this);
     }
 
     /**

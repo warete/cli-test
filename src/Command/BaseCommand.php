@@ -1,14 +1,14 @@
 <?php
 
-namespace Egor\Cli\Command;
+namespace Warete\Cli\Command;
 
-use Egor\Cli\Command\Contract\Command;
+use Warete\Cli\Command\Contract\Command;
 
 abstract class BaseCommand implements Command
 {
     public function getName(): string
     {
-        return (string) mb_strstr(new \ReflectionClass($this)->getShortName(), 'Command', true);
+        return (string) mb_strtolower(mb_strstr(new \ReflectionClass($this)->getShortName(), 'Command', true));
     }
 
     public function getDescription(): string
