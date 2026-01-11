@@ -20,11 +20,24 @@ class ArgumentsParser implements Contract\InputParser
     {
         $result = [];
         foreach (\array_slice($this->data, 2) as $argValue) {
+            $value = null;
             if (preg_match('/^{(.*)}$/', $argValue, $matches)) {
-                $result[] = $matches[1];
+                $value = $matches[1];
             }
             if (preg_match('/^[A-z]+$/', $argValue)) {
-                $result[] = $argValue;
+                $value = $argValue;
+            }
+            if (!$value) {
+                continue;
+            }
+            $valueParts = explode(',', $value);
+            if (count($valueParts) > 1) {
+                $result = [
+                    ...$result,
+                    ...$valueParts
+                ];
+            } else {
+                $result[] = $value;
             }
         }
 

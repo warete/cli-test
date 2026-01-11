@@ -27,7 +27,15 @@ class ParamsParser implements Contract\InputParser
         foreach (\array_slice($this->data, 2) as $argValue) {
             if (preg_match('/^\[(?<name>.+?)=(?<value>.*?)\]$/', $argValue, $matches)) {
                 $result[$matches['name']] ??= [];
-                $result[$matches['name']][] = $matches['value'];
+                $valueParts = explode(',', $matches['value']);
+                if (count($valueParts) > 1) {
+                    $result[$matches['name']] = [
+                        ...$result[$matches['name']],
+                        ...$valueParts
+                    ];
+                } else {
+                    $result[$matches['name']] = $matches['value'];
+                }
             }
         }
 

@@ -2,6 +2,8 @@
 
 namespace Egor\Cli\Command;
 
+use Egor\Cli\Command\Contract\Command;
+
 abstract class BaseCommand implements Command
 {
     public function getName(): string

@@ -24,17 +24,23 @@ class TestCommand extends BaseCommand
         $output->printLine(\sprintf('Called command: %s', $this->getName()));
         $output->printLine();
 
-        $output->printLine('Arguments:');
-        foreach ($input->getArguments() as $arg) {
-            $output->printLine(\sprintf("\t- %s", $arg));
+        $arguments = $input->getArguments();
+        if ($arguments) {
+            $output->printLine('Arguments:');
+            foreach ($arguments as $arg) {
+                $output->printLine(\sprintf("\t- %s", $arg));
+            }
+            $output->printLine();
         }
-        $output->printLine();
 
-        $output->printLine('Options:');
-        foreach ($input->getParams() as $name => $value) {
-            $output->printLine(\sprintf("\t- %s", $name));
-            foreach (\is_array($value) ? $value : [$value] as $v) {
-                $output->printLine(\sprintf("\t\t- %s", $v));
+        $params = $input->getParams();
+        if ($params) {
+            $output->printLine('Options:');
+            foreach ($params as $name => $value) {
+                $output->printLine(\sprintf("\t- %s", $name));
+                foreach (\is_array($value) ? $value : [$value] as $v) {
+                    $output->printLine(\sprintf("\t\t- %s", $v));
+                }
             }
         }
     }

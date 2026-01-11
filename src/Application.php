@@ -2,7 +2,7 @@
 
 namespace Egor\Cli;
 
-use Egor\Cli\Command\Command;
+use Egor\Cli\Command\Contract\Command;
 use Egor\Cli\Command\HelpCommand;
 use Egor\Cli\Exception\CommandNotFound;
 use Egor\Cli\IO\Contract\Input;

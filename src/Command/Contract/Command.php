@@ -1,6 +1,6 @@
 <?php
 
-namespace Egor\Cli\Command;
+namespace Egor\Cli\Command\Contract;
 
 use Egor\Cli\Application;
 use Egor\Cli\IO\Contract\Input;
