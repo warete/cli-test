@@ -7,7 +7,7 @@ interface Input
     public function getCommandName(): ?string;
 
     /**
-     * @return array<string, array|string|null>
+     * @return array<string, array<string>|string|null>
      */
     public function getParams(): array;
 

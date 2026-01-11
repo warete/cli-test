@@ -4,6 +4,7 @@ namespace Egor\Cli\IO;
 
 class ArgumentsParser implements Contract\InputParser
 {
+    /** @var array<int, string|null>  */
     private array $data = [];
 
     public function setData(array $data): static
@@ -21,10 +22,10 @@ class ArgumentsParser implements Contract\InputParser
         $result = [];
         foreach (\array_slice($this->data, 2) as $argValue) {
             $value = null;
-            if (preg_match('/^{(.*)}$/', $argValue, $matches)) {
+            if (preg_match('/^{(.*)}$/', (string) $argValue, $matches)) {
                 $value = $matches[1];
             }
-            if (preg_match('/^[A-z]+$/', $argValue)) {
+            if (preg_match('/^[A-z]+$/', (string) $argValue)) {
                 $value = $argValue;
             }
             if (!$value) {

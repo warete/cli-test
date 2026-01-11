@@ -19,13 +19,13 @@ class ParamsParser implements Contract\InputParser
     }
 
     /**
-     * @return array<string, array|string|null>
+     * @return array<string, array<string>|string|null>
      */
     public function parse(): array
     {
         $result = [];
         foreach (\array_slice($this->data, 2) as $argValue) {
-            if (preg_match('/^\[(?<name>.+?)=(?<value>.*?)\]$/', $argValue, $matches)) {
+            if (preg_match('/^\[(?<name>.+?)=(?<value>.*?)\]$/', (string) $argValue, $matches)) {
                 $result[$matches['name']] ??= [];
                 $valueParts = explode(',', $matches['value']);
                 if (count($valueParts) > 1) {
@@ -34,7 +34,7 @@ class ParamsParser implements Contract\InputParser
                         ...$valueParts
                     ];
                 } else {
-                    $result[$matches['name']] = $matches['value'];
+                    $result[$matches['name']][] = $matches['value'];
                 }
             }
         }

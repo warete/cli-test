@@ -12,7 +12,7 @@ use Throwable;
 class Application
 {
     /** @var non-empty-list<Command> */
-    private array $commands = [];
+    private array $commands;
 
     public function __construct(
         private Input $input,
@@ -45,7 +45,7 @@ class Application
     }
 
     /**
-     * @return Command[]
+     * @return non-empty-list<Command>
      */
     public function getCommands(): array
     {

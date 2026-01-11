@@ -7,9 +7,21 @@ use Egor\Cli\IO\Contract\InputParser;
 
 class StdInput implements Input
 {
-    private array $params = [];
-    private array $arguments = [];
+    /**
+     * @var array<string|int, string|array<string>|null>
+     */
+    private array $params;
 
+    /**
+     * @var array<string|int, string|array<string>|null>
+     */
+    private array $arguments;
+
+    /**
+     * @param InputParser $paramsParser
+     * @param InputParser $argumentsParser
+     * @param list<string|null> $argv
+     */
     public function __construct(
         private readonly InputParser $paramsParser,
         private readonly InputParser $argumentsParser,
@@ -24,11 +36,17 @@ class StdInput implements Input
         return \array_key_exists(1, $this->argv) ? $this->argv[1] : null;
     }
 
+    /**
+     * @return array<string|int, string|array<string>|null>
+     */
     public function getParams(): array
     {
         return $this->params;
     }
 
+    /**
+     * @return array<string|int, string|array<string>|null>
+     */
     public function getArguments(): array
     {
         return $this->arguments;
