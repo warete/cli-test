@@ -1,5 +1,7 @@
 <?php
 
+use Egor\CliApp\TestCommand;
+
 require_once 'vendor/autoload.php';
 
 $input = new \Egor\Cli\IO\StdInput(
@@ -11,4 +13,5 @@ $input = new \Egor\Cli\IO\StdInput(
 $output = new \Egor\Cli\IO\StdOutput();
 
 $app = new \Egor\Cli\Application(input: $input, output: $output);
+$app->addCommand(new TestCommand());
 $app->start();
